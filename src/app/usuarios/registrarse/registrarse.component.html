@@ -1,0 +1,42 @@
+<section >
+
+<div class="titulo">
+    <h3 class="titulo-log">Nombre de la pag</h3>
+</div>
+
+<form class="form-log" (ngSubmit)="logUser()">
+
+    <fieldset>
+
+        <legend id="registrarse-log">Registrarse</legend>
+
+
+        <div class="ingresar">
+
+            <label for="nombre">Ingrese su nombre de usuario</label>
+            <input type="text" id="nombreususario" [(ngModel)]="usuarioLog.nombreUsuario" name="nombreususario">
+
+        </div>
+
+        <div class="ingresar">
+
+            <label for="email">Ingrese su Email</label>
+            <input type="email" id="email" [(ngModel)]="usuarioLog.email" name="email">
+
+        </div>
+
+
+        <div class="ingresar">
+
+            <label for="contraseña">Ingrese la contraseña</label>
+            <input type="password" id="password" [(ngModel)]="usuarioLog.contrasena" name="contraseña">
+
+        </div>
+        
+        <button class="btn-enviar" type="submit">Registrarse</button>
+    </fieldset>
+</form>
+
+</section>
+
+

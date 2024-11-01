@@ -1,0 +1,10 @@
+{
+  "Usuarios": [
+    {
+      "id": 0,
+      "nombreUsuario": "imanol",
+      "email": "imanolsayago0@gmail.com",
+      "contrasena": "a"
+    }
+  ]
+}

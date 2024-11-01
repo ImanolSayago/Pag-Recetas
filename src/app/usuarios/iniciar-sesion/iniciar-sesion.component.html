@@ -1,0 +1,21 @@
+<h2>Nombre de la pagina!!</h2>
+<form>
+    <fieldset>
+        <legend>Iniciar Sesion</legend>
+        <div>
+            <label for="usuario">Ingrese su usuario</label>
+            <input type="text" id="usuario" [(ngModel)]="usuario.nombreUsuario" name="usuario">
+        </div>
+
+        <div>
+            <label for="contraseña">Ingrese la contraseña</label>
+            <input type="text" id="contraseña" [(ngModel)]="usuario.contrasena" name="contraseña">
+        </div>
+        <button type="submit">Iniciar sesion</button>
+
+        <div>
+            <h4>¿No tenes una cuenta?</h4>
+            <button (click)="irLoguearse()">Registrate!</button>
+        </div>
+    </fieldset>
+</form>
