@@ -1,10 +1,22 @@
 {
   "Usuarios": [
     {
-      "id": 0,
-      "nombreUsuario": "imanol",
-      "email": "imanolsayago0@gmail.com",
-      "contrasena": "a"
+      "id": "b396",
+      "nombreUsuario": "imanolsayago",
+      "contrasena": "asd",
+      "email": "imanolsayago0@gmail.com"
+    },
+    {
+      "id": "e87a",
+      "nombreUsuario": "pepe",
+      "contrasena": "asdasd",
+      "email": "pepegoleador@gmail.com"
+    },
+    {
+      "id": "48f5",
+      "nombreUsuario": "imanolsayagoa",
+      "contrasena": "1",
+      "email": "ima@gmail.com"
     }
   ]
 }

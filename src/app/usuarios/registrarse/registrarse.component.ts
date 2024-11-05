@@ -2,73 +2,68 @@ import { Component, inject } from '@angular/core';
 import { User } from '../../interfaces/user';
 import { UsuariosService } from '../../service/usuarios.service';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-registrarse',
   standalone: true,
-  imports: [FormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './registrarse.component.html',
   styleUrl: './registrarse.component.css'
 })
 export class RegistrarseComponent {
 
-  idlog:number=0;
-  usuarioLog: User={
-    nombreUsuario:"",
-    email:"",
-    contrasena:""
-  }
-
-  listaUsuarios : Array<User> =[];
-
-  userService= inject(UsuariosService);
-  rutas= inject(Router)
-
-  logUser() {
-
-    this.usuarioLog.id = this.idlog++;
+  fb= inject(FormBuilder);
+  servicioLog= inject(UsuariosService);
   
-    if (!this.usuarioLog.nombreUsuario || !this.usuarioLog.contrasena) {
-      alert("Complete todos los campos");
-      return; 
-    }
-  
-    
-    this.userService.GetUsuarios().subscribe({
-      next: (usuarios) => {
-        this.listaUsuarios = usuarios; 
+  formulario= this.fb.nonNullable.group({
+    nombreUsuario:['',[Validators.required]],
+    contrasena:['',[Validators.required]],
+    email:['',[Validators.required]]
+  })
 
-        const nombreencontrado= this.listaUsuarios.some(u => u.nombreUsuario === this.usuarioLog.nombreUsuario);
-        const emailencontrado= this.listaUsuarios.some(u => u.email === this.usuarioLog.email);
+  addUsuario()
+  {
+    if(this.formulario.invalid)return;
 
+    var listausuarios:Array<User>= [];
+    const usuario: User= this.formulario.getRawValue();
 
+     this.servicioLog.getUsuarios().subscribe({
+      next:(usuarios)=>
+      {
+        listausuarios=usuarios;
 
-        if (nombreencontrado) {
+        const encontradonombre= listausuarios.some(us=>us.nombreUsuario === usuario.nombreUsuario);
+        const encontradoemail= listausuarios.some(us=>us.email === usuario.email);
 
-          alert("El nombre de usuario ya existe. Elige otro.");
-          return; 
-        }
-        else if (emailencontrado) {
-          alert("El email ya esta en uso. Elige otro.");
-          return; 
-        } 
-        else {
-          
-          this.userService.LoguearUsuario(this.usuarioLog).subscribe({
-            next: () => {
-              this.rutas.navigate(['/inicio']);
-            },
-            error: (err: Error) => {
-              console.log(err.message);
-            }
-          });
-        }
-      },
-      error: (err: Error) => {
-        console.log(err.message); 
+        
+    if(encontradoemail) 
+      {
+        alert("El email que ingreso ya tiene un usuario");
+        return;
       }
-    });
-  }
+  
+      if(encontradonombre)
+      {
+        alert("El nombre de usuario que ingreso ya existe");
+        return;
+      }
 
+      this.servicioLog.Registrarse(usuario).subscribe({
+        next:()=>
+        {
+          alert("Usuario registrado");
+        },
+        error:(err:Error)=>
+        {
+          console.log("Error al registrarse:",err.message);
+        }
+      })
+    }      
+    })
+
+   
+   
+  }
 }

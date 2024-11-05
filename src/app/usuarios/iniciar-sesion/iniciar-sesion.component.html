@@ -1,21 +1,29 @@
-<h2>Nombre de la pagina!!</h2>
-<form>
-    <fieldset>
-        <legend>Iniciar Sesion</legend>
-        <div>
-            <label for="usuario">Ingrese su usuario</label>
-            <input type="text" id="usuario" [(ngModel)]="usuario.nombreUsuario" name="usuario">
-        </div>
+<h3>Aca iria el nombre o algo parecido que diga iniciar sesion gordo boludo</h3>
+<form [formGroup]="formulario" (ngSubmit)="ingresar()">
 
+    <section>
         <div>
-            <label for="contraseña">Ingrese la contraseña</label>
-            <input type="text" id="contraseña" [(ngModel)]="usuario.contrasena" name="contraseña">
+            <label for="">Ingrese el nombre de usuario</label>
+            <input type="text" formControlName="nombreUsuario">
         </div>
-        <button type="submit">Iniciar sesion</button>
+        @if (formulario.controls['nombreUsuario'].touched) {
+            @if (formulario.controls['nombreUsuario'].getError('requiered')) {
+                <span>Campo requerido</span>
+            }
+        }
+    </section>
 
+    <section>
         <div>
-            <h4>¿No tenes una cuenta?</h4>
-            <button (click)="irLoguearse()">Registrate!</button>
+            <label for="">Ingrese la contraseña</label>
+            <input type="password" formControlName="contrasena">
         </div>
-    </fieldset>
+        @if (formulario.controls['contrasena'].touched) {
+            @if (formulario.controls['contrasena'].getError('requiered')) {
+                <span>Campo requerido</span>
+            }
+        }
+
+        <button>Ingresar</button>
+    </section>
 </form>
