@@ -56,7 +56,7 @@ export class IniciarSesionComponent {
           {
             next:(logueado)=>{
               if(logueado){
-                this.rutas.navigate(['inicio']); //tendria que ser el home page putitos
+                this.rutas.navigate(['home']); //tendria que ser el home page putitos
               }
             },
             error:(err:Error)=>{

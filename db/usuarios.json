@@ -17,6 +17,18 @@
       "nombreUsuario": "imanolsayagoa",
       "contrasena": "1",
       "email": "ima@gmail.com"
+    },
+    {
+      "id": "dc1a",
+      "nombreUsuario": "imanolsayago2",
+      "contrasena": "asd",
+      "email": "imanolsayago02@gmail.com"
+    },
+    {
+      "id": "948b",
+      "nombreUsuario": "lucas costa",
+      "contrasena": "lucas",
+      "email": "lucas@gmail.com"
     }
   ]
 }

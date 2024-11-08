@@ -1,1 +1,21 @@
-<p>Iniciaste sesion putito</p>
+<section>
+    <div class="cont-p">
+        <p>No sabes que comer?Aca te dejamos 5 recetas para que pruebes</p>
+    </div>
+
+    <div class="cont-recetas">
+        @for (item of listaRecetas; track $index) {
+
+            <div class="recetas-ind">
+
+                <div class="cont-img">
+                    <img src="{{item.image}}" alt="">
+                </div>
+                
+                <li class="titulo">{{item.title}}</li> <br>
+                 <button class="btn">Ver informacion detallada</button>
+            </div>
+             <br><br><br>
+        }
+    </div>
+</section>

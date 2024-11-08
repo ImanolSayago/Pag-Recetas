@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { User } from '../../interfaces/user';
 import { UsuariosService } from '../../service/usuarios.service';
 import { Router } from '@angular/router';
-import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-registrarse',
@@ -13,6 +13,8 @@ import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angu
 })
 export class RegistrarseComponent {
 
+  
+  rutas = inject(Router);
   fb= inject(FormBuilder);
   servicioLog= inject(UsuariosService);
   
@@ -54,6 +56,7 @@ export class RegistrarseComponent {
         next:()=>
         {
           alert("Usuario registrado");
+          this.viajariniciarSesion();
         },
         error:(err:Error)=>
         {
@@ -66,4 +69,9 @@ export class RegistrarseComponent {
    
    
   }
+
+  viajariniciarSesion()
+   {
+    this.rutas.navigate(['iniciarSesion']);
+   }
 }

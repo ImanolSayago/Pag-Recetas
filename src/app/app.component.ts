@@ -4,10 +4,13 @@ import { RegistrarseComponent } from "./usuarios/registrarse/registrarse.compone
 import { IniciarSesionComponent } from "./usuarios/iniciar-sesion/iniciar-sesion.component";
 import { HomePageComponent } from "./pages/home-page/home-page.component";
 
+import { NavbarComponent } from "./navBar/navbar/navbar.component";
+
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RegistrarseComponent, IniciarSesionComponent, HomePageComponent],
+  imports: [RouterOutlet, RegistrarseComponent, IniciarSesionComponent, HomePageComponent,NavbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
